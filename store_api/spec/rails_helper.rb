@@ -7,7 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 Shoulda::Matchers.configure do |config|
-  configt.integrate do |with|
+  config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
@@ -40,6 +40,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include ApplicationHelper # included helpers
   config.include FactoryBot::Syntax::Methods # methods factory bot
+  config.render_views # view json
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
