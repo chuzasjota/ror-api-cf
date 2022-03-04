@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
+  belongs_to :store
+  has_many :tokens
+  # nested attributes
+  accepts_nested_attributes_for :store
   # validations
   validates :email, :password_digest, :age, :type, presence: true
   validates :email, uniqueness: true
