@@ -22,4 +22,20 @@ describe 'Rutas de producto' do
       action: 'index'
     )
   end
+  it 'Ruta delete products' do
+    expect(delete: '/v1/products/1').to route_to(
+      format: 'json',
+      controller: 'v1/products',
+      action: 'destroy',
+      id: '1'
+    )
+  end
+  it 'Ruta restaurar producto' do
+    expect(post: '/v1/products/1/restore').to route_to(
+      format: 'json',
+      controller: 'v1/products',
+      action: 'restore',
+      product_id: '1'
+    )
+  end
 end
